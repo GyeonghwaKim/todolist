@@ -12,6 +12,8 @@ public class ToDoMain {
         boolean isList;
         boolean quit = false;
 
+        TodoUtil.loadList(l,"todolist.txt");
+
         Menu.displaymenu();
 
         do{
@@ -41,9 +43,15 @@ public class ToDoMain {
                 }
                 case "help" -> Menu.displaymenu();
                 case "exit" -> quit = true;
-                default -> System.out.println("정확하 명령어를 입력하세요 (도움말 명령어는 help)");
+                case "find" ->{
+                    String str=sc.next();
+                    TodoUtil.findItem(str,l);
+                }
+                default -> System.out.println("정확한 명령어를 입력하세요 (도움말 명령어는 help)");
             }
             if(isList) TodoUtil.listAll(l);
         }while (!quit);
+
+        TodoUtil.saveList(l,"todolist.txt");
     }
 }

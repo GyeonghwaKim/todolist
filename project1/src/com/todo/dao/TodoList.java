@@ -61,6 +61,10 @@ public class TodoList {
         return false;
     }
 
+    public int length(){
+        return list.size();
+    }
+
 //    public static void listAll(TodoList l){
 //
 //    }
